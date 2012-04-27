@@ -58,6 +58,8 @@ public class HFileMapper extends Mapper< LongWritable, Text, LongWritable, Text>
 
 	  /**
 	   * Map task.
+	   * eg. record is 0002,abc,def
+           * then the MD5 input pattern is 2abcdef (String)
 	   */
 	  public void map(LongWritable key, Text row, Context context)
 		      throws IOException, InterruptedException {
@@ -68,7 +70,7 @@ public class HFileMapper extends Mapper< LongWritable, Text, LongWritable, Text>
 				// TextInputFormat
 				String record = row.toString();
 				String[] splits = record.split("[\t|,]");
-/*
+
 				// add record key to value
 				String value = new String("" + Long.parseLong(splits[0]));
 				// add every fields without ',' to value
@@ -82,7 +84,7 @@ public class HFileMapper extends Mapper< LongWritable, Text, LongWritable, Text>
 				// get MD5 value and set to MD5Bytes
 				MD5Bytes.set(this.hashGener.getHashValue());
 		
-	*/	  
+		  
 			  context.write( new LongWritable(Long.parseLong(splits[0])), new Text("r"+record));//splits[0]+","+MD5Bytes.toString())) ;
 			  //context.write( new IntWritable(Integer.parseInt(splits[0])), row) ;
 		  }
