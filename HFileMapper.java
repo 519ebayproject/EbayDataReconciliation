@@ -58,6 +58,7 @@ public class HFileMapper extends Mapper< LongWritable, Text, LongWritable, Text>
 
 	  /**
 	   * Map task.
+	   * CAUTION that here is the pattern of our input String
 	   * eg. record is 0002,abc,def
            * then the MD5 input pattern is 2abcdef (String)
 	   */
