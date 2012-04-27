@@ -7,20 +7,19 @@ import java.security.MessageDigest;
 
 import edu.tongji.sse.hadoop.datareconciliation.hashgeneration.HashGener;
 
-/**
- * @author root
- *
+
+/** Set the source String using setSource() first, an exception otherwise
+ * @author Jingxiao Zhang
+ * @see edu.tongji.sse.hadoop.datareconciliation.hashgeneration.HashGener#getHashValue()
+ * @return 128 bits (16 bytes)  of the MD5 value as a format byte[].
+ * @version 1.00
  */
 public class MD5 extends HashGener<byte[]> {
 
 	public MD5(){
 		super(128);
 	}
-	/** Set the source String using setSource() first, an exception otherwise
-	 * @see edu.tongji.sse.hadoop.datareconciliation.hashgeneration.HashGener#getHashValue()
-	 * @return 128 bits (16 bytes)  of the MD5 value as a format byte[].
-	 * @version current
-	 */
+	
 	@Override
 	public byte[] getHashValue() {
 		try {
